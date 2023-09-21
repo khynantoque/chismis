@@ -1,21 +1,28 @@
-import Home from './pages/Home'
+import Home from "./pages/Home";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
-} from 'react-router-dom'
+} from "react-router-dom";
+import { ThemeProvider } from "@emotion/react";
+import createMuiTheme from "./theme/theme";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route path='/' element={<Home/>} />
+      <Route path="/" element={<Home />} />
     </Route>
   )
-)
+);
 
 const App = () => {
-  return <RouterProvider router={router}/>;
-}
+  let theme = createMuiTheme();
+  return (
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
+};
 
-export default App
+export default App;
