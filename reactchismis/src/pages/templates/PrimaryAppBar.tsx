@@ -19,9 +19,9 @@ const PrimaryAppBar = () => {
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{ display: { fontWeight: 700, letterSpacing: -0.5}}}
+                        sx={{ display: { fontWeight: 700, letterSpacing: "-0.5px"}}}
                     >
-                        Chismis
+                        CHISMIS
                     </Typography>
                 </Link>
             </Toolbar>
