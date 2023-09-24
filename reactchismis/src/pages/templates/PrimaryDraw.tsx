@@ -1,10 +1,11 @@
 import {
   Box,
-  Drawer,
   Typography,
+  styled,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import MuiDrawer from "@mui/material/Drawer";
 import { useState, useEffect } from "react";
 import DrawToggle from "../../components/PrimaryDraw/DrawToggle";
 
@@ -20,6 +21,39 @@ const PrimaryDraw = () => {
   const handleDrawClose = () => {
     setOpen(false);
   };
+
+  const openedMixin = () => ({
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    overflow: "hidden"
+  })
+  const closedMixin = () => ({
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    overflow: "hidden",
+    width: theme.primaryDraw.closed,
+  })
+
+  const Drawer = styled(
+    MuiDrawer,
+    {}
+  )(({theme, open}) => ({
+    width: theme.primaryDraw.width,
+    whiteSpace: "nowrap",
+    boxSizing: "border-box",
+    ...(open && {
+      ...openedMixin(),
+      "& .MuiDrawer-paper": openedMixin(),
+    }),
+    ...(!open && {
+      ...closedMixin(),
+      "& .MuiDrawer-paper": closedMixin(),
+    }),
+  }))
 
   useEffect(() => {
     setOpen(!below600);
@@ -45,7 +79,7 @@ const PrimaryDraw = () => {
             p: 0,
             width: open ? "auto" : "100%"
         }}>
-          <DrawToggle/>
+          <DrawToggle open={open} handleDrawerOpen={handleDrawOpen} handleDrawerClose={handleDrawClose} />
           {[...Array(20)].map((_, i) => (
             <Typography key={i} paragraph>
               {i + 1}
