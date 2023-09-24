@@ -70,7 +70,7 @@ class Channel(models.Model):
     
     def save(self, *args, **kwargs):
         if self.id:
-            existing = get_object_or_404(Category, id=self.id)
+            existing = get_object_or_404(Channel, id=self.id)
             if existing.icon != self.icon:
                 existing.icon.delete(save=False)
             if existing.banner != self.banner:
