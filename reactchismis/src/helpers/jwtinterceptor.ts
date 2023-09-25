@@ -2,7 +2,7 @@ import { BASE_URL } from "../config";
 import axios, { AxiosInstance } from "axios";
 import { useNavigate } from "react-router-dom";
 
-const API_BASE_URL = useNavigate()
+const API_BASE_URL = BASE_URL
 
 const useAxiosWithInterceptor = (): AxiosInstance => {
     const jwtAxios = axios.create({ baseURL: API_BASE_URL });
