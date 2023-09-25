@@ -1,11 +1,12 @@
 import { useTheme } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
-import axios from "axios";
+import useAxiosWithInterceptor from "../../helpers/jwtinterceptor";
 
 const SecondaryDraw = () => {
     const theme = useTheme()
+    const jwtInterceptor = useAxiosWithInterceptor();
 
-    axios
+    jwtInterceptor
         .get('http://127.0.0.1:8000/api/server/select/?category=Gwapo')
         .then((response) => {
             console.log(response.data)

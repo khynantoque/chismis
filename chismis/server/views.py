@@ -6,11 +6,13 @@ from server.serializer import ServerSerializer
 from .models import Server
 from .schema import server_list_docs
 from django.db.models import Count
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 class ServerListViewSet(viewsets.ModelViewSet):
     
     queryset = Server.objects.all()
+    permission_classes = [IsAuthenticated]
     
     serializer_class = ServerSerializer
     
