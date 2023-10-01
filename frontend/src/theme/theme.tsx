@@ -35,6 +35,11 @@ const createMuiTheme = () => {
             body1: {
                 fontWeight: 500,
                 letterSpacing: "-0.5px"
+            },
+            body2: {
+                fontWeight: 500,
+                fontSize: "15px",
+                letterSpacing: "-0.5px"
             }
         },
         primaryAppBar: {

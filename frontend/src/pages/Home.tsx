@@ -5,6 +5,7 @@ import SecondaryDraw from './templates/SecondaryDraw'
 import Main from './templates/Main'
 import PopularChannels from '../components/PrimaryDraw/PopularChannels'
 import ExploreCategories from '../components/SecondaryDraw/ExploreCategories'
+import ExploreServers from '../components/Main/ExploreServers'
 
 const Home = () => {
     return (
@@ -17,7 +18,9 @@ const Home = () => {
             <SecondaryDraw>
                 <ExploreCategories/>
             </SecondaryDraw>
-            <Main/>
+            <Main>
+                <ExploreServers/>
+            </Main>
         </Box>
     )
 }
