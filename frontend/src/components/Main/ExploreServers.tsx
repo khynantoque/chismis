@@ -53,6 +53,7 @@ const ExploreServers = () => {
                 letterSpacing: "-2px",
               },
               textAlign: { xs: "center", sm: "left" },
+              textTransform: "capitalize"
             }}
           >
             {categoryName ? categoryName : "Popular Servers"}
