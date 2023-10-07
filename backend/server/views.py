@@ -10,6 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 from drf_spectacular.utils import extend_schema
 
 class CategoryListViewSet(viewsets.ModelViewSet):
+    serializer_class = CategorySerializer
     queryset = Category.objects.all()
     
     @extend_schema(responses=CategorySerializer)
