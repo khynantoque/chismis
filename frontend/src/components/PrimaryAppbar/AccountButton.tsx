@@ -1,24 +1,42 @@
 import { AccountCircle } from "@mui/icons-material";
 import { Box, IconButton, Menu, MenuItem } from "@mui/material";
 import DarkModeSwitch from "./DarkMode/DarkModeSwitch";
+import React from "react";
 
 const AccountButton = () => {
-    const renderMenu = (
-        <Menu open={true}>
-            <MenuItem>
-                <DarkModeSwitch/>
-            </MenuItem>
-        </Menu>
-    )
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-    return (
-        <Box sx={{ display: { xs: "flex" } }}>
-            <IconButton edge="end" color="inherit">
-                <AccountCircle/>
-            </IconButton>
-            {renderMenu}
-        </Box>
-    )
-}
+  const isMenuOpen = Boolean(anchorEl);
+
+  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  }
+
+  const renderMenu = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+      <MenuItem>
+        <DarkModeSwitch />
+      </MenuItem>
+    </Menu>
+  );
+
+  return (
+    <Box sx={{ display: { xs: "flex" } }}>
+      <IconButton edge="end" color="inherit" onClick={handleProfileMenuOpen}>
+        <AccountCircle />
+      </IconButton>
+      {renderMenu}
+    </Box>
+  );
+};
 
 export default AccountButton;
