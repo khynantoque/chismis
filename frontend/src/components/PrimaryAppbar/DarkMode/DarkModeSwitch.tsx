@@ -22,9 +22,9 @@ const DarkModeSwitch = () => {
         color="inherit"
       >
         {theme.palette.mode === "dark" ? (
-          <ToggleOffIcon sx={{ fontSize: "2.5rem", p: 0 }} />
+          <ToggleOnIcon sx={{ fontSize: "2.5rem", p: 0 }} />
         ) : (
-          <ToggleOnIcon sx={{ fontSize: "2.5rem" }} />
+          <ToggleOffIcon sx={{ fontSize: "2.5rem" }} />
         )}
       </IconButton>
     </>
