@@ -10,5 +10,5 @@ from . import urls
 
 application = ProtocolTypeRouter({
     'http': django_application,
-    # 'websocket': URLRouter(urls.websocket_urlpatterns),
+    'websocket': URLRouter(urls.websocket_urlpatterns),
 })
