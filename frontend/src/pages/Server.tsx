@@ -5,7 +5,7 @@ const socketUrl = 'ws://127.0.0.1:8000/ws/test'
 
 const Server = () => {
     const [message, setMessage] = useState('')
-    const [inputValue, setInputValue] = useState('')]
+    const [inputValue, setInputValue] = useState('')
 
     const { sendJsonMessage } = websocket(socketUrl, {
         onOpen: () => console.log('Connected'),

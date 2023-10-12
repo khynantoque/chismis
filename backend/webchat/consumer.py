@@ -8,7 +8,7 @@ class MyConsumer(WebsocketConsumer):
         self.accept()
         
     def receive(self, text_data=None, bytes_data=None):
-        self.send(text_data="Hello world!")
+        self.send(text_data=f"Hello from the other side! {text_data}")
         # Or, to send a binary frame:
         self.close()
         
