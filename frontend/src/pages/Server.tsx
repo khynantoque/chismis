@@ -4,26 +4,36 @@ import websocket from 'react-use-websocket'
 const socketUrl = 'ws://127.0.0.1:8000/ws/test'
 
 const Server = () => {
+    const [newMessage, setNewMessage] = useState<string[]>([])
     const [message, setMessage] = useState('')
-    const [inputValue, setInputValue] = useState('')
 
     const { sendJsonMessage } = websocket(socketUrl, {
         onOpen: () => console.log('Connected'),
-        onMessage: (message) => setMessage(message.data),
+        onMessage: (message) => {
+            const data = JSON.parse(message.data)
+            setNewMessage((prev) => [...prev, data.new_message])
+        },
+        onError: (error) => console.log('Error', error),
         onClose: () => console.log('Disconnected'),
     })
 
-    const sendInputValue = () => {
-        const message = { text: inputValue }
-        sendJsonMessage(message)
-        setInputValue('')
-    }
-
     return (
         <div>
-            <input value={inputValue} type='text'onChange={(e) => setInputValue(e.target.value)}/>
-            <button onClick={sendInputValue}>Send</button>
-            <div>Received Data: {message} </div>
+            {newMessage.map((message, index) => {
+                return (
+                    <div key={index}>
+                        <p>{message}</p>
+                    </div>
+                )
+            })}
+
+            <form>
+                <label>
+                    Enter message: 
+                    <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} />
+                </label>
+            </form>
+            <button onClick={() => { sendJsonMessage({type: "message", message}) }}>Send Message</button>
         </div>
     )
 }
