@@ -13,7 +13,7 @@ const Server = () => {
             <CssBaseline />
             <PrimaryAppBar/>
             <PrimaryDraw>
-                <UserServers open={true}/>
+                <UserServers open={false}/>
             </PrimaryDraw>
             <SecondaryDraw>
                 <ServerChannels/>

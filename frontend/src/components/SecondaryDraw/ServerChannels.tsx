@@ -26,7 +26,7 @@ const ServerChannels = () => {
   const isDarkMode = theme.palette.mode === "dark";
   const { dataCRUD, error, isLoading, fetchData } = useCrud<Category>(
     [],
-    "/server/channel/"
+    "/server/category/"
   );
 
   useEffect(() => {

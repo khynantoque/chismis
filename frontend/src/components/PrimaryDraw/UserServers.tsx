@@ -28,7 +28,7 @@ type Props = {
 const UserServers: React.FC<Props> = ({ open }) => {
   const { dataCRUD, error, isLoading, fetchData } = useCrud<Server>(
     [],
-    "/server/select/"
+    "/server/select"
   );
 
   useEffect(() => {
