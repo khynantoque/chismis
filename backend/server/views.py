@@ -97,8 +97,8 @@ class ServerListViewSet(viewsets.ModelViewSet):
             self.queryset = self.queryset.annotate(num_members=Count('member'))
 
         if by_serverid:
-            if not request.user.is_authenticated:
-                raise AuthenticationFailed()
+            # if not request.user.is_authenticated:
+            #     raise AuthenticationFailed()
             try:
                 self.queryset = self.queryset.filter(id=int(by_serverid))
                 if not self.queryset.exists():
